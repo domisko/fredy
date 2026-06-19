@@ -25,7 +25,7 @@ import {
   Progress,
 } from '@douyinfe/semi-ui-19';
 import { InputNumber } from '@douyinfe/semi-ui-19';
-import { xhrPost, xhrGet } from '../../services/xhr';
+import { xhrPost, xhrGet, xhrDelete } from '../../services/xhr';
 import { Toast } from '@douyinfe/semi-ui-19';
 import { SegmentPart } from '../../components/segment/SegmentPart';
 import {
@@ -125,6 +125,8 @@ const GeneralSettings = function GeneralSettings() {
   const [debugBusy, setDebugBusy] = React.useState(false);
   const [debugConfirmVisible, setDebugConfirmVisible] = React.useState(false);
   const [debugClearConfirmVisible, setDebugClearConfirmVisible] = React.useState(false);
+  const [resetCacheBusy, setResetCacheBusy] = React.useState(false);
+  const [resetCacheConfirmVisible, setResetCacheConfirmVisible] = React.useState(false);
   const debugStatusSeqRef = React.useRef(0);
   const applyDebugStatus = React.useCallback((fresh) => {
     debugStatusSeqRef.current += 1;
@@ -391,6 +393,20 @@ const GeneralSettings = function GeneralSettings() {
       } else {
         Toast.error(t('settings.debugToastDownloadError'));
       }
+    }
+  }, [t]);
+
+  const handleResetAllListings = React.useCallback(async () => {
+    setResetCacheBusy(true);
+    try {
+      await xhrDelete('/api/admin/generalSettings/listings');
+      Toast.success(t('settings.resetCacheToastSuccess'));
+    } catch (e) {
+      console.error(e);
+      Toast.error(t('settings.resetCacheToastError'));
+    } finally {
+      setResetCacheBusy(false);
+      setResetCacheConfirmVisible(false);
     }
   }, [t]);
 
@@ -888,6 +904,24 @@ const GeneralSettings = function GeneralSettings() {
                       )}
                     </div>
                   </SegmentPart>
+
+                  <SegmentPart name={t('settings.resetCacheSectionName')}>
+                    <Banner
+                      type="danger"
+                      fullMode={false}
+                      closeIcon={null}
+                      style={{ marginBottom: 12 }}
+                      description={t('settings.resetCacheDescription')}
+                    />
+                    <Button
+                      theme="solid"
+                      type="danger"
+                      loading={resetCacheBusy}
+                      onClick={() => setResetCacheConfirmVisible(true)}
+                    >
+                      {t('settings.resetCacheButton')}
+                    </Button>
+                  </SegmentPart>
                 </div>
               </TabPane>
             )}
@@ -968,6 +1002,26 @@ const GeneralSettings = function GeneralSettings() {
           }
         >
           <div>{t('settings.debugConfirmReenableMessage')}</div>
+        </Modal>
+      )}
+
+      {resetCacheConfirmVisible && (
+        <Modal
+          title={t('settings.resetCacheConfirmTitle')}
+          visible={resetCacheConfirmVisible}
+          onCancel={() => setResetCacheConfirmVisible(false)}
+          footer={
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
+              <Button onClick={() => setResetCacheConfirmVisible(false)} disabled={resetCacheBusy}>
+                {t('settings.resetCacheConfirmCancel')}
+              </Button>
+              <Button type="danger" theme="solid" onClick={handleResetAllListings} loading={resetCacheBusy}>
+                {t('settings.resetCacheConfirmOk')}
+              </Button>
+            </div>
+          }
+        >
+          <div>{t('settings.resetCacheConfirmMessage')}</div>
         </Modal>
       )}
 
