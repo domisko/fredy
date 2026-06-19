@@ -25,6 +25,8 @@ import {
 } from '@douyinfe/semi-ui-19';
 import {
   IconArrowLeft,
+  IconChevronLeft,
+  IconChevronRight,
   IconMapPin,
   IconCart,
   IconClock,
@@ -115,6 +117,7 @@ export default function ListingDetail() {
   const lang = (userSettings?.language ?? 'en').toLowerCase();
   const [commuteTimes, setCommuteTimes] = useState(null);
   const [commuteLoading, setCommuteLoading] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
   const [translatedText, setTranslatedText] = useState(null);
   const [showTranslation, setShowTranslation] = useState(false);
   const [translating, setTranslating] = useState(false);
@@ -137,6 +140,7 @@ export default function ListingDetail() {
 
   useEffect(() => {
     setNotesDraft(listing?.notes ?? '');
+    setImageIndex(0);
   }, [listing?.id, listing?.notes]);
 
   useEffect(() => {
@@ -513,6 +517,13 @@ export default function ListingDetail() {
             ) : (
               <Text type="secondary">{t('listing.detail.noAddress')}</Text>
             )}
+            {listing.address_accuracy === 'LOW' && (
+              <Tooltip content={t('listing.detail.addressAccuracyTooltip')}>
+                <Tag color="orange" size="small" style={{ cursor: 'default' }}>
+                  {t('listing.detail.addressApproximate')}
+                </Tag>
+              </Tooltip>
+            )}
           </Space>
           <Space wrap className="listing-detail__header-actions">
             <Button
@@ -547,16 +558,46 @@ export default function ListingDetail() {
 
         <Row>
           <Col span={24} lg={12}>
-            <div
-              className={`listing-detail__image-container${!listing.image_url ? ' listing-detail__image-container--placeholder' : ''}`}
-            >
-              <Image
-                src={listing.image_url ?? no_image}
-                fallback={<img src={no_image} alt={t('listing.detail.noImageAlt')} />}
-                style={{ width: '100%', height: '100%' }}
-                preview={!!listing.image_url}
-              />
-            </div>
+            {(() => {
+              const images = Array.isArray(listing.image_urls) && listing.image_urls.length > 0
+                ? listing.image_urls
+                : listing.image_url ? [listing.image_url] : [];
+              const currentImg = images[imageIndex] ?? null;
+              return (
+                <div
+                  className={`listing-detail__image-container${!currentImg ? ' listing-detail__image-container--placeholder' : ''}`}
+                  style={{ position: 'relative' }}
+                >
+                  <Image
+                    src={currentImg ?? no_image}
+                    fallback={<img src={no_image} alt={t('listing.detail.noImageAlt')} />}
+                    style={{ width: '100%', height: '100%' }}
+                    preview={!!currentImg}
+                  />
+                  {images.length > 1 && (
+                    <>
+                      <Button
+                        icon={<IconChevronLeft />}
+                        size="small"
+                        theme="solid"
+                        style={{ position: 'absolute', left: 8, top: '50%', transform: 'translateY(-50%)', opacity: 0.8 }}
+                        onClick={() => setImageIndex((i) => (i - 1 + images.length) % images.length)}
+                      />
+                      <Button
+                        icon={<IconChevronRight />}
+                        size="small"
+                        theme="solid"
+                        style={{ position: 'absolute', right: 8, top: '50%', transform: 'translateY(-50%)', opacity: 0.8 }}
+                        onClick={() => setImageIndex((i) => (i + 1) % images.length)}
+                      />
+                      <div style={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)', background: 'rgba(0,0,0,0.45)', color: '#fff', borderRadius: 4, padding: '2px 8px', fontSize: 12 }}>
+                        {imageIndex + 1} / {images.length}
+                      </div>
+                    </>
+                  )}
+                </div>
+              );
+            })()}
 
             <div className="listing-detail__notes">
               <Title heading={4} className="listing-detail__notes-title">
@@ -622,16 +663,6 @@ export default function ListingDetail() {
                   : listing.description || t('listing.detail.noDescription')}
               </Text>
 
-              {listing.distance_to_destination && (
-                <>
-                  <Divider margin="1.5rem" />
-                  <Space align="center">
-                    <IconActivity style={{ fontSize: '18px', color: 'var(--semi-color-primary)' }} />
-                    <Text strong>{t('listing.detail.distanceToHome')}</Text>
-                    <Tag color="blue">{listing.distance_to_destination} m</Tag>
-                  </Space>
-                </>
-              )}
 
               {userSettings?.home_address?.coords && listing.latitude && listing.latitude !== -1 && (
                 <>

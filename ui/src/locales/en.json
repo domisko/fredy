@@ -5,9 +5,7 @@
     "locale": "en-US",
     "semiLocale": "en_US"
   },
-
   "app.demoBanner": "You're currently viewing the demo version of Fredy. Jobs won't scrape websites, and any changes you make will be reverted at midnight.",
-
   "nav.dashboard": "Dashboard",
   "nav.jobs": "Jobs",
   "nav.listings": "Listings",
@@ -19,14 +17,12 @@
   "nav.settingsPage": "Settings",
   "nav.expandSidebar": "Expand sidebar",
   "nav.collapseSidebar": "Collapse sidebar",
-
   "login.usernamePlaceholder": "Username",
   "login.passwordPlaceholder": "Password",
   "login.loginButton": "Login",
   "login.errorMandatory": "Username and password are mandatory.",
   "login.errorInvalid": "Login unsuccessful. Please check your username and password.",
   "login.demoBanner": "This is the demo version of Fredy. Use 'demo' as both the username and password to log in.",
-
   "dashboard.title": "Dashboard",
   "dashboard.sectionGeneral": "General",
   "dashboard.sectionOverview": "Overview",
@@ -50,7 +46,6 @@
   "dashboard.kpiActiveListingsDesc": "Total active listings",
   "dashboard.kpiMedianPrice": "Median Price",
   "dashboard.kpiMedianPriceDesc": "Median Price of listings",
-
   "jobs.title": "Jobs",
   "jobs.newJob": "New Job",
   "jobs.searchPlaceholder": "Search",
@@ -94,7 +89,6 @@
   "jobs.tableCloneJob": "Clone Job",
   "jobs.tableDeleteListings": "Delete all found Listings",
   "jobs.tableDeleteJob": "Delete Job",
-
   "jobs.mutation.editTitle": "Edit Job",
   "jobs.mutation.createTitle": "Create new Job",
   "jobs.mutation.back": "Back",
@@ -128,7 +122,6 @@
   "jobs.mutation.activationHelp": "Whether or not the job is activated. Inactive jobs will be ignored when Fredy checks for new listings.",
   "jobs.deletion.title": "Delete Job",
   "jobs.deletion.message": "Are you sure you want to delete this job? All associated listings will be removed from the database.",
-
   "listings.title": "Listings",
   "listings.watchlistTitle": "Watchlist",
   "listings.searchPlaceholder": "Search",
@@ -180,7 +173,6 @@
   "listings.tooltipOriginalListing": "Original Listing",
   "listings.tooltipViewInFredy": "View in Fredy",
   "listings.tooltipRemove": "Remove",
-
   "listing.detail.back": "Back",
   "listing.detail.defaultTitle": "Listing Detail",
   "listing.detail.noAddress": "No address provided",
@@ -232,7 +224,6 @@
   "listing.detail.toastNotesSaved": "Notes saved",
   "listing.detail.toastNotesError": "Failed to save notes",
   "listing.detail.toastLoadError": "Failed to load listing details",
-
   "listing.deletion.title": "Delete Listings",
   "listing.deletion.message": "How would you like to delete the selected listing(s)?",
   "listing.deletion.confirm": "Confirm",
@@ -243,14 +234,12 @@
   "listing.deletion.hardDescription": "Listings are completely removed from the database.",
   "listing.deletion.hardConsequence": "Consequence: They might re-appear when scraping the next time because Fredy won't know they were previously found.",
   "listing.deletion.rememberChoice": "Remember my choice and skip this dialog next time",
-
   "listings.status.none": "None",
   "listings.status.applied": "Applied",
   "listings.status.rejected": "Rejected",
   "listings.status.accepted": "Accepted",
   "listings.status.statusLabel": "Status",
   "listings.status.tooltip": "Track where you stand with this listing: Applied once you have reached out, Rejected if it did not work out, or Accepted if you got it.",
-
   "map.title": "Map View",
   "map.noHomeAddress": "No home address set. Configure it in user settings to use the distance filter.",
   "map.onlyValidAddresses": "Only listings with valid addresses are shown on this map.",
@@ -276,7 +265,6 @@
   "map.noHomeAddressAfter": " to use the distance filter.",
   "map.toastDeleted": "Listing successfully removed",
   "map.toastDeleteError": "Error deleting listing",
-
   "users.title": "Users",
   "users.newUser": "New User",
   "users.tableColumnUser": "User",
@@ -288,7 +276,6 @@
   "users.toastRemoved": "User successfully removed",
   "users.removalModal.title": "Removing user",
   "users.removalModal.message": "Removing this user will also remove all associated jobs.",
-
   "users.mutation.editTitle": "Edit User",
   "users.mutation.newTitle": "New User",
   "users.mutation.back": "Back",
@@ -306,7 +293,6 @@
   "users.mutation.retypePasswordPlaceholder": "Retype password",
   "users.mutation.sectionIsAdmin": "Is user an admin?",
   "users.mutation.isAdminHelp": "Check this if the user is an administrator",
-
   "settings.title": "Settings",
   "settings.tabSystem": "System",
   "settings.tabExecution": "Execution",
@@ -426,7 +412,6 @@
   "settings.debugToastCleared": "Stored debug logs were deleted.",
   "settings.debugToastClearError": "Could not delete the stored debug logs.",
   "app.debugLoggingBanner": "Debug logging is active! Everything Fredy logs is being stored in its database. Disable it in Settings → Debug once you're done.",
-
   "watchlist.sectionName": "Notification for Watch List",
   "watchlist.sectionHelp": "You can get notified for changes on listings from your watch list.",
   "watchlist.noteTitle": "Note",
@@ -438,7 +423,6 @@
   "watchlist.selectNotificationMethod": "Select notification method",
   "watchlist.addNotificationTitle": "Add notification method",
   "watchlist.addNotificationDescription": "When something has changed, Fredy will notify you using the selected notification adapter. Note, some adapter like SqLite are not available here.",
-
   "notification.defaultTitle": "Adding a new Notification Adapter",
   "notification.description": "When Fredy finds new listings, we like to report them to you. To do so, notification adapter can be configured. There are multiple ways how Fredy can send new listings to you. Chose your weapon...",
   "notification.selectPlaceholder": "Select a notification adapter",
@@ -455,7 +439,6 @@
   "notification.infoTitle": "Information",
   "notification.tableEmptyState": "No notification adapters found.",
   "notification.tableColumnName": "Name",
-
   "provider.defaultTitle": "Adding a new Provider",
   "provider.editTitle": "Editing an existing Provider",
   "provider.save": "Save",
@@ -471,9 +454,7 @@
   "provider.tableColumnName": "Name",
   "provider.tableColumnUrl": "URL",
   "provider.tableOpenProvider": "Open Provider",
-
   "news.videoFallback": "Your browser does not support the video tag.",
-
   "version.newVersionAvailable": "New version available",
   "version.currentLabel": "Current: {{version}}",
   "version.releaseNotes": "Release notes",
@@ -482,7 +463,6 @@
   "version.viewOnGithub": "View on GitHub",
   "version.yourVersion": "Your Version",
   "version.latestVersion": "Latest Version",
-
   "tracking.okText": "Yes! I want to help",
   "tracking.cancelText": "No, thanks",
   "tracking.greeting": "Hey 👋",
@@ -491,13 +471,9 @@
   "tracking.paragraph3": "However, it would be a huge help if you'd allow me to collect some analytical data. Wait, before you click \"no\", let me explain. If you agree, Fredy will send a ping once every 6 hours to my internal tracking project. (Will be open-sourced soon)",
   "tracking.paragraph4": "The data includes: names of active adapters/providers, OS, architecture, Node version, and language. The information is entirely anonymous and helps me understand which adapters/providers are most frequently used.",
   "tracking.thanks": "Thanks🤘",
-
   "permission.title": "Insufficient permission :(",
-
   "footer.madeWith": "Made with ❤️ by",
-
   "dashboard.noData": "No Data",
-
   "common.save": "Save",
   "common.cancel": "Cancel",
   "common.delete": "Delete",
@@ -513,5 +489,19 @@
   "common.startNow": "Start now",
   "settings.language": "Language",
   "settings.languageHelp": "The language used throughout the interface.",
-  "settings.languageSaveError": "Failed to save language preference."
+  "settings.languageSaveError": "Failed to save language preference.",
+  "jobs.popoverResetCache": "Reset seen listings cache (Admin) — next run will re-notify all matching listings",
+  "jobs.toastCacheReset": "Listing cache reset — next run will re-notify all matches",
+  "jobs.tableResetCache": "Reset listing cache (Admin)",
+  "settings.resetCacheSectionName": "Danger Zone",
+  "settings.resetCacheDescription": "Permanently deletes all stored listings and seen-listing hashes for every job and every user. The next run of each job will re-notify about all currently matching listings. This cannot be undone.",
+  "settings.resetCacheButton": "Reset all listings & cache",
+  "settings.resetCacheConfirmTitle": "Reset all listings & cache?",
+  "settings.resetCacheConfirmMessage": "This will permanently delete ALL stored listings and seen-listing hashes for every job across all users. Each job will re-notify about every currently matching listing on its next run. This cannot be undone.",
+  "settings.resetCacheConfirmCancel": "Cancel",
+  "settings.resetCacheConfirmOk": "Yes, delete everything",
+  "settings.resetCacheToastSuccess": "All listings and cache cleared. Next job run will re-notify about all matches.",
+  "settings.resetCacheToastError": "Failed to reset listing cache.",
+  "listing.detail.addressApproximate": "approx.",
+  "listing.detail.addressAccuracyTooltip": "Exact street address not available — location is approximate. Commute times are estimated from the nearest known point."
 }
